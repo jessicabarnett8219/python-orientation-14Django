@@ -1,9 +1,9 @@
-{% if latest_question_list %}
+{% if artist_list %}
     <ul>
-    {% for question in latest_question_list %}
-        <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
+    {% for artist in artist_list %}
+        <li><a href="/history/{{ artist.id }}/">{{ artist.artist_name }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
-    <p>No polls are available.</p>
+    <p>No artists are available.</p>
 {% endif %}

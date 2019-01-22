@@ -5,6 +5,8 @@ class Artist(models.Model):
   def __str__(self):
         return self.artist_name
 
+
+# When you pass in a an artist on song, you have to pass the whole instance of artist, not just the foreign key
 class Song(models.Model):
   song_name = models.CharField(max_length=200)
   artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
