@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 
-from .models import Artist, Song
+from .models import Artist, Song, SongArtist
 
 # request contains the information we need from the forms
 
@@ -14,6 +14,7 @@ def index(request):
 
 def detail(request, artist_id):
     artist = Artist.objects.get(pk=artist_id)
-    song_list = artist.song_set.all()
-    context = {'songs': song_list, 'artist': artist}
+    # student_list = Student.objects.filter(cohort_id=cohort_id)
+    song_list = SongArtist.objects.filter(artist_id=artist_id)
+    context = {'song_list': song_list, 'artist': artist}
     return render(request, 'history/detail.html', context)
